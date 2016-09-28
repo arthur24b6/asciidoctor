@@ -85,7 +85,7 @@ class Section < AbstractBlock
   def generate_id
     if @document.attributes.has_key? 'sectids'
       sep = @document.attributes['idseparator'] || '_'
-      pre = @document.attributes['idprefix'] || '_'
+      pre = @document.attributes['idprefix'] || ''
       base_id = %(#{pre}#{title.downcase.gsub(InvalidSectionIdCharsRx, sep).tr_s(sep, sep).chomp(sep)})
       # ensure id doesn't begin with idseparator if idprefix is empty and idseparator is not empty
       if pre.empty? && !sep.empty? && base_id.start_with?(sep)
